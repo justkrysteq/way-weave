@@ -47,4 +47,24 @@ Object subclass: TravelSegment [
 		endPoint := newEndPoint.
 		distance := newDistance.
 	]
+
+	+ other [
+		(other isKindOf: Route) ifTrue: [
+			| combinedRoute |
+			combinedRoute := Route new.
+			combinedRoute segments: (OrderedCollection with: self), other segments.
+
+			^ combinedRoute
+		].
+
+		(other isKindOf: TravelSegment) ifTrue: [
+			| combinedRoute |
+			combinedRoute := Route new.
+			combinedRoute segments: (OrderedCollection with: self with: other).
+
+			^ combinedRoute
+		].
+
+		self error: ('Can''t add object to class ', self class name, ' with an object of class ', other class name)
+	]
 ]
