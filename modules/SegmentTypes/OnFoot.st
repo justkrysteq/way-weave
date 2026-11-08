@@ -14,4 +14,8 @@ TravelSegment subclass: OnFoot [
 	transportTypeName [
 		^ 'On Foot'
 	]
+
+	carbonDioxideEmission [
+		^ 0
+	]
 ]

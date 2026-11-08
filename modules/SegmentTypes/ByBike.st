@@ -14,5 +14,8 @@ TravelSegment subclass: ByBike [
 	transportTypeName [
 		^ 'By Bike'
 	]
-]
 
+	carbonDioxideEmission [
+		^ 0
+	]
+]

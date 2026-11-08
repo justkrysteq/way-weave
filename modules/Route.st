@@ -39,6 +39,10 @@ Object subclass: Route [
 		^ self totalOf: [ :segment | segment cost ]
 	]
 
+	carbonDioxideEmission [
+		^ self totalOf: [ :segment | segment carbonDioxideEmission ]
+	]
+
 	print [
 		| newline index |
 		Transcript show: '------------- Route -------------'; cr.
@@ -49,13 +53,14 @@ Object subclass: Route [
 			index := index + 1.
 			Transcript show: index asString, '. ', segment transportTypeName, newline,
 				'   ', segment startPoint, ' -> ', segment endPoint, newline,
-				'   ', segment distance asString, ' km | ', segment time rounded asString, ' min | ', (segment cost asScaledDecimal: 2) asString, '$'; cr.
+				'   ', segment distance asString, ' km | ', segment time rounded asString, ' min | ', (segment cost asScaledDecimal: 2) asString, '$ | ', (segment carbonDioxideEmission asScaledDecimal: 2) asString, ' kg'; cr.
 		].
 
 		Transcript show: '---------------------------------'; cr.
 		Transcript show: 'Distance: ', self distance asString, ' km'; cr.
 		Transcript show: 'Time: ', self time rounded asString, ' min'; cr.
 		Transcript show: 'Cost: ', (self cost asScaledDecimal: 2) asString, '$'; cr.
+		Transcript show: 'Carbon Dioxide Emission: ', (self carbonDioxideEmission asScaledDecimal: 2) asString, ' kg'; cr.
 		Transcript show: '---------------------------------'; cr.
 	]
 

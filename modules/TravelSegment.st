@@ -29,6 +29,10 @@ Object subclass: TravelSegment [
 		self subclassResponsibility
 	]
 
+	carbonDioxideEmission [
+		self subclassResponsibility
+	]
+
 	description [
 		| newline |
 		newline := Character nl asString.
