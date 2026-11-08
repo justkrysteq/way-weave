@@ -21,16 +21,42 @@ Object subclass: Route [
 		]
 	]
 
+	totalOf: value [
+		^ segments inject: 0 into: [ :sum :segment |
+			sum + (value value: segment)
+		]
+	]
+
+	distance [
+		^ self totalOf: [ :segment | segment distance ]
+	]
+
+	time [
+		^ self totalOf: [ :segment | segment time ]
+	]
+
+	cost [
+		^ self totalOf: [ :segment | segment cost ]
+	]
+
 	print [
-		Transcript show: 'Route'; cr.
+		| newline index |
+		Transcript show: '------------- Route -------------'; cr.
+		newline := Character nl asString.
+		index := 0.
 
 		segments do: [ :segment |
-			Transcript show: segment startPoint, ' -> '.
+			index := index + 1.
+			Transcript show: index asString, '. ', segment transportTypeName, newline,
+				'   ', segment startPoint, ' -> ', segment endPoint, newline,
+				'   ', segment distance asString, ' km | ', segment time rounded asString, ' min | ', (segment cost asScaledDecimal: 2) asString, '$'; cr.
 		].
 
-		segments notEmpty ifTrue: [
-			Transcript show: segments last endPoint; nl; cr.
-		].
+		Transcript show: '---------------------------------'; cr.
+		Transcript show: 'Distance: ', self distance asString, ' km'; cr.
+		Transcript show: 'Time: ', self time rounded asString, ' min'; cr.
+		Transcript show: 'Cost: ', (self cost asScaledDecimal: 2) asString, '$'; cr.
+		Transcript show: '---------------------------------'; cr.
 	]
 
 	+ other [
