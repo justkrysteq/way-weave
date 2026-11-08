@@ -14,9 +14,9 @@
 	{
 		devShells.${system}.default = pkgs.mkShell {
 			packages = with pkgs; [
-				gnu-smalltalk gnumake
+				gnu-smalltalk
 
-				(writeShellScriptBin "a" "command gst src/main.st")
+				(writeShellScriptBin "a" "command gst main.st")
 			];
 		};
 	};
