@@ -4,6 +4,8 @@ FileStream fileIn: 'modules/SegmentTypes/ByBike.st'.
 FileStream fileIn: 'modules/SegmentTypes/ByBus.st'.
 FileStream fileIn: 'modules/Route.st'.
 
+| segment segmentOnFoot segmentByBike segmentByBus travelRoute route route2 route3 route4 route5 travelRoute2 route6 |
+
 segment := TravelSegment new.
 segment startPoint: 'Paris' endPoint: 'Lyon' distance: 465.0.
 
@@ -53,5 +55,9 @@ route5 print.
 route3 print.
 
 route6 := segmentByBus + ((Route new) segments: (OrderedCollection with: ((ByBus new) startPoint: 'Lisbon' endPoint: 'Warsaw' distance: 700.0) with: segmentOnFoot)).
+
+route6 print.
+
+(route6 segments at: 1) delay: 20.
 
 route6 print.

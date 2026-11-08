@@ -1,6 +1,8 @@
 TravelSegment subclass: ByBus [
+	| delay |
+
 	time [
-		^ distance / self speed * 60
+		^ distance / self speed * 60 + delay
 	]
 
 	cost [
@@ -20,5 +22,19 @@ TravelSegment subclass: ByBus [
 
 	carbonDioxideEmission [
 		^ 1.2 * distance
+	]
+
+	delay [
+		^ delay
+	]
+
+	delay: newDelay [
+		delay := newDelay
+	]
+
+	" Initializer "
+	startPoint: newStartPoint endPoint: newEndPoint distance: newDistance [
+		super startPoint: newStartPoint endPoint: newEndPoint distance: newDistance.
+		delay := 0.
 	]
 ]
