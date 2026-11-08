@@ -73,3 +73,11 @@ Transcript show: (segmentByBus costFor: (Senior new)) asString; cr.
 Transcript show: ''; cr.
 Transcript show: (route6 costFor: (Regular new)) asString; cr.
 Transcript show: (route6 costFor: (Senior new)) asString; cr.
+
+(route6 carbonDioxideEmission < route4 carbonDioxideEmission) ifTrue: [
+	Transcript show: 'Route 6 is better for environment'; cr.
+	Transcript show: 'Route 6 emission: ', route6 carbonDioxideEmission asString, Character nl asString, 'Route 4 emission: ', route4 carbonDioxideEmission asString; cr.
+] ifFalse: [
+	Transcript show: 'Route 4 is better for environment'; cr.
+	Transcript show: 'Route 6 emission: ', route6 carbonDioxideEmission asString, Character nl asString, 'Route 4 emission: ', route4 carbonDioxideEmission asString; cr.
+]
