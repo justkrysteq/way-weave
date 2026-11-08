@@ -33,6 +33,10 @@ Object subclass: TravelSegment [
 		self subclassResponsibility
 	]
 
+	costFor: passenger [
+		^ self cost - (self cost * passenger discount)
+	]
+
 	description [
 		| newline |
 		newline := Character nl asString.

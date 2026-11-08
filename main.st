@@ -3,6 +3,10 @@ FileStream fileIn: 'modules/SegmentTypes/OnFoot.st'.
 FileStream fileIn: 'modules/SegmentTypes/ByBike.st'.
 FileStream fileIn: 'modules/SegmentTypes/ByBus.st'.
 FileStream fileIn: 'modules/Route.st'.
+FileStream fileIn: 'modules/Passenger.st'.
+FileStream fileIn: 'modules/PassengerTypes/Student.st'.
+FileStream fileIn: 'modules/PassengerTypes/Senior.st'.
+FileStream fileIn: 'modules/PassengerTypes/Regular.st'.
 
 | segment segmentOnFoot segmentByBike segmentByBus travelRoute route route2 route3 route4 route5 travelRoute2 route6 |
 
@@ -61,3 +65,11 @@ route6 print.
 (route6 segments at: 1) delay: 20.
 
 route6 print.
+
+Transcript show: (segmentByBus costFor: (Regular new)) asString; cr.
+Transcript show: (segmentByBus costFor: (Student new)) asString; cr.
+Transcript show: (segmentByBus costFor: (Senior new)) asString; cr.
+
+Transcript show: ''; cr.
+Transcript show: (route6 costFor: (Regular new)) asString; cr.
+Transcript show: (route6 costFor: (Senior new)) asString; cr.

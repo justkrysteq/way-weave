@@ -39,6 +39,10 @@ Object subclass: Route [
 		^ self totalOf: [ :segment | segment cost ]
 	]
 
+	costFor: passenger [
+		^ self totalOf: [ :segment | segment costFor: passenger ]
+	]
+
 	carbonDioxideEmission [
 		^ self totalOf: [ :segment | segment carbonDioxideEmission ]
 	]
